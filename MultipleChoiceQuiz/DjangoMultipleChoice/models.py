@@ -33,11 +33,13 @@ class Person(models.Model):
     update_date = models.DateTimeField(auto_now=True, null=True)
 
 class RoleType(models.Model):
-    type = (
+    TYPES = (
+        ('B', 'Basic'),
         ('T', 'Teacher'),
         ('S', 'Student'),
         ('P', 'Principal')
     )
+    type = models.CharField(max_length=1, choices=TYPES, default='B')
 
 class Role(models.Model):
     person = models.ForeignKey(Person)
@@ -52,7 +54,6 @@ class QuizAttempt(models.Model):
 
 class QuestionAttempt(models.Model):
     quiz_attempt = models.ForeignKey(QuizAttempt)
-    question = models.ForeignKey(Question)
     question_answer = models.ForeignKey(QuestionAnswer)
     create_date = models.DateTimeField()
 
