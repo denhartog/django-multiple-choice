@@ -54,7 +54,6 @@ class QuizAttempt(models.Model):
 
 class QuestionAttempt(models.Model):
     quiz_attempt = models.ForeignKey(QuizAttempt)
-    question = models.ForeignKey(Question)
     question_answer = models.ForeignKey(QuestionAnswer)
     create_date = models.DateTimeField()
 
